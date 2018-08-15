@@ -32,6 +32,7 @@ class MyOtherView(TemplateView):
         form = OtherAuthorForm(self.request.POST)
         if form.is_valid():
             data = form.data
-            data['created_by'] = self.request.user
+            if not self.request.user.is_anonymous:
+                data['created_by'] = self.request.user
             Author.objects.create(**data)
         return redirect('/123')
