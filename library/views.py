@@ -11,14 +11,6 @@ from library.models import Author
 class MyView(TemplateView):
     template_name = 'test.html'
 
-    def get_context_data(self, value, **kwargs):
-        if self.request.GET.get('render'):
-            return {
-                'value': value
-            }
-        else:
-            raise Http404()
-
 
 class MyOtherView(TemplateView):
     template_name = 'test.html'
@@ -31,8 +23,9 @@ class MyOtherView(TemplateView):
     def post(self, *args, **kwargs):
         form = OtherAuthorForm(self.request.POST)
         if form.is_valid():
-            data = form.data
+            data = form.data.dict()  # <- .dict()
             if not self.request.user.is_anonymous:
                 data['created_by'] = self.request.user
             Author.objects.create(**data)
-        return redirect('/123')
+        return redirect('/')
+

@@ -1,5 +1,15 @@
+{% load staticfiles %}
 <html>
+<head>
+    <link rel="stylesheet" href="{% static 'library/styles.css' %}">
+</head>
 <body>
 Hello, world! {{ value }}
+<br>
+{% for book in books %}
+    <p>{{ book.name }} -
+        {% if book.image %}<img src="{{ book.image.url }}" style="height: 200px">{% endif %}
+    </p>
+{% endfor %}
 </body>
 </html>

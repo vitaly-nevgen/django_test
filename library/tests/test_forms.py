@@ -17,3 +17,22 @@ class TestForm(TestCase):
         form = AuthorForm(data)
         self.assertFalse(form.is_valid())
 
+    def test_fields_ok(self):
+        data1 = {
+            'first_name': 'John',
+            'last_name': 'Doe123',
+            'bday': datetime.now() - timedelta(days=365)
+        }
+        form = OtherAuthorForm(data1)
+        is_valid = form.is_valid()
+        self.assertTrue(is_valid)
+
+    def test_field_first_name_error(self):
+        data = {
+            'first_name': 'John' * 6,
+            'last_name': 'Doe123',
+            'bday': datetime.now() - timedelta(days=365)
+        }
+        form = OtherAuthorForm(data)
+        self.assertFalse(form.is_valid())
+        self.assertTrue(form.errors['first_name'])

@@ -21,3 +21,12 @@ class Author(models.Model):
     def get_user_username(self):
         if self.created_by:
             return self.created_by.username
+
+
+class Book(models.Model):
+    name = models.CharField(max_length=255)
+    image = models.ImageField(null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+
