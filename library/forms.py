@@ -31,6 +31,6 @@ class OtherAuthorForm(forms.ModelForm):
 
     def clean_last_name(self):
         last_name = self.cleaned_data['last_name']
-        if len(last_name) > self.MIN_FIRST_NAME_LENGTH:
+        if len(last_name) > self.MIN_LAST_NAME_LENGTH:
             raise forms.ValidationError('Invalid last_name')
 

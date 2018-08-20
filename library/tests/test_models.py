@@ -18,3 +18,9 @@ class TestModels(TestCase):
             "John, Doe"
         )
 
+    def test_get_user_username(self):
+        self.assertEqual(
+            self.author.get_user_username(),
+            self.author.created_by
+        )
+
