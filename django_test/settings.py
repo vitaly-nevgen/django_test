@@ -124,3 +124,6 @@ MEDIA_URL = '/media/'
 
 MEDIA_ROOT = 'media'
 STATIC_ROOT = 'static'
+
+import django_heroku
+django_heroku.settings(locals())
