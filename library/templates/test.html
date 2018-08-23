@@ -2,14 +2,26 @@
 <html>
 <head>
     <link rel="stylesheet" href="{% static 'library/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'library/css/bootstrap.css' %}">
 </head>
 <body>
-Hello, world! {{ value }}
-<br>
-{% for book in books %}
-    <p>{{ book.name }} -
-        {% if book.image %}<img src="{{ book.image.url }}" style="height: 200px">{% endif %}
-    </p>
-{% endfor %}
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">name</th>
+      <th scope="col">image</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for book in books %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{ book.name }}</td>
+      <td>{% if book.image %}<img src="{{ book.image.url }}" style="height: 200px">{% endif %}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
 </body>
 </html>

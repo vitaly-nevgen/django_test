@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from library.views import MyView, MyOtherView
+from library.views import MyView, MyOtherView, BooksApi, BookCreateApi
 
 from django.conf.urls.static import static
 
@@ -25,6 +25,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', MyView.as_view()),
     path('other/', MyOtherView.as_view()),
+    path('api/books/', BooksApi.as_view()),
+    path('api/books/create/', BookCreateApi.as_view()),
 ]
 
 if settings.DEBUG:
