@@ -47,7 +47,15 @@ https://getbootstrap.com/docs/4.1/getting-started/download/
 - галерею взять отсюда https://getbootstrap.com/docs/4.1/components/carousel/#with-indicators
 
 # Полезные ссылки 
-https://docs.djangoproject.com/en/2.1/howto/static-files/
-https://docs.djangoproject.com/ko/2.1/ref/templates/api/
+- https://docs.djangoproject.com/en/2.1/howto/static-files/
+- https://docs.djangoproject.com/ko/2.1/ref/templates/api/
+
+# Homework 3
+1) Создать middleware, которая считает сколько времени отрабатывала каждая из view. Результат записать в request
+2) В файле library/view.py создать две вью при помощи django-rest-framework: первая - обновляет уже существующую запись, вторая - удаляет.
+
+# Полезные ссылки
+- https://docs.djangoproject.com/en/2.1/topics/http/middleware/
+- http://www.django-rest-framework.org/api-guide/generic-views/#updatemodelmixin
 
 
