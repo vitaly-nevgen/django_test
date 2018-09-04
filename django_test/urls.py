@@ -15,7 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from library.views import MyView, MyOtherView, BooksApi, BookCreateApi
+from library.views import MyView, MyOtherView
+from library.api_views import (
+    BookListApi,
+    BookDetailApi,
+    AuthorListApi,
+    AuthorDetailApi,
+)
 
 from django.conf.urls.static import static
 
@@ -25,8 +31,12 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', MyView.as_view()),
     path('other/', MyOtherView.as_view()),
-    path('api/books/', BooksApi.as_view()),
-    path('api/books/create/', BookCreateApi.as_view()),
+
+    path('api/authors/', AuthorListApi.as_view()),
+    path('api/authors/<author_pk>/', AuthorDetailApi.as_view()),
+    path('api/authors/<author_pk>/books/', BookListApi.as_view()),
+    path('api/authors/<author_pk>/books/<book_pk>/', BookDetailApi.as_view()),
+
 ]
 
 if settings.DEBUG:
