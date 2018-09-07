@@ -5,6 +5,13 @@
     <link rel="stylesheet" href="{% static 'library/css/bootstrap.css' %}">
 </head>
 <body>
+{% if user.is_subscriber %}
+    {{ user }} — is subscribed
+{% else %}
+    {{ user }} — is NOT subscribed
+{% endif %}
+
+
 <table class="table table-striped">
   <thead>
     <tr>

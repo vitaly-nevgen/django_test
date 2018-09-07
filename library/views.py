@@ -10,7 +10,13 @@ from library.models import Author
 
 
 class MyView(TemplateView):
-    template_name = 'test.html'
+    template_name = 'index.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['user'] = self.request.user
+        return context
+
 
     def get(self, request, *args, **kwargs):
         if request.GET.get('my_exception'):
@@ -19,7 +25,7 @@ class MyView(TemplateView):
 
 
 class MyOtherView(TemplateView):
-    template_name = 'test.html'
+    template_name = 'index.html'
 
     def get_template_names(self):
         if self.request.GET.get('exception'):
